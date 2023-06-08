@@ -186,11 +186,15 @@ autoprovisionStage1()
         log_say "This is not a valid pendrive"
         log_say "Please insert a USB drive with a single partition with the label 'SETUP' or no partitions at all (uninitialized)."
         log_say "Sleeping for 30s and then rebooting."
-        sleep 30
+        # pull our variable in from .profile
+        . /root/.profile
         # Check if $REPO = main, if so reboot
         if [ "$REPO" = "main" ]; then
+            sleep 30
             log_say "REPO is set to main, rebooting"
             reboot
+        else
+            log_say "REPO is set to ${REPO}, not rebooting"
         fi
     fi # end valid pendrive check
 }

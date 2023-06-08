@@ -166,13 +166,12 @@ fixPackagesDNS()
         log_say "Domain resolution successful."
     fi
 
-    log_say "Updating system time using ntp; otherwise the openwrt.org certificates are rejected as not yet valid."
-    ntpd -d -q -n -p 0.openwrt.pool.ntp.org
-
     log_say "Installing opkg packages"
-    opkg update
-    opkg install wget-ssl unzip ca-bundle ca-certificates
-    opkg install git git-http jq curl bash nano
+    opkg update --no-check-certificate
+    opkg install --no-check-certificate wget-ssl unzip ca-bundle ca-certificates git git-http jq curl bash nano ntpdate
+
+    # Set the time to fix ssl cert issues
+    ntpdate -q 0.openwrt.pool.ntp.org
 }
 
 # Wait for Internet connection
