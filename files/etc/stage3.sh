@@ -53,6 +53,14 @@ wait_for_opkg() {
 # Wait for opkg to finish
 wait_for_opkg
 
+## INSTALL MESH  ##
+log_say "Installing Mesh Packages..."
+opkg install tgrouterappstore luci-app-shortcutmenu luci-app-poweroff luci-app-wizard
+opkg remove wpad wpad-basic wpad-basic-openssl wpad-basic-wolfssl wpad-wolfssl
+opkg install wpad-mesh-openssl kmod-batman-adv batctl avahi-autoipd batctl-full luci-app-dawn
+opkg install /etc/luci-app-easymesh_2.1_all.ipk
+opkg install /etc/luci-proto-batman-adv_git-22.104.47289-0a762fd_all.ipk
+    
 # Cleanup our auto-provision and prepare for first real boot
 [ -d /etc/auto-provision ] && rm -rf /etc/auto-provision
 [ -f /etc/rc.local ] && echo "# Empty by design" > /etc/rc.local
