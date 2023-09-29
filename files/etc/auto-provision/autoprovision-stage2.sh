@@ -87,7 +87,7 @@ installPackages()
     opkg install tgrouterappstore luci-app-shortcutmenu luci-app-poweroff luci-app-wizard luci-app-openwisp
     opkg remove wpad wpad-basic wpad-basic-openssl wpad-basic-wolfssl wpad-wolfssl openwisp-monitoring openwisp-config
     opkg install wpad-mesh-openssl kmod-batman-adv batctl avahi-autoipd batctl-full luci-app-dawn mesh11sd
-    opkg install /etc/luci-app-easymesh_2.2_all.ipk
+    opkg install /etc/luci-app-easymesh_2.3_all.ipk
     opkg install /etc/luci-proto-batman-adv_git-22.104.47289-0a762fd_all.ipk
     
     # List of our packages to install
