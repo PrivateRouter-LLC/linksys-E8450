@@ -53,13 +53,13 @@ wait_for_opkg() {
 # Wait for opkg to finish
 wait_for_opkg
 
-## INSTALL MESH  ##
-log_say "Installing Mesh Packages..."
-opkg install tgrouterappstore luci-app-shortcutmenu luci-app-poweroff luci-app-wizard
-opkg remove wpad wpad-basic wpad-basic-openssl wpad-basic-wolfssl wpad-wolfssl
-opkg install wpad-mesh-openssl kmod-batman-adv batctl avahi-autoipd batctl-full luci-app-dawn
-opkg install /etc/luci-app-easymesh_2.4_all.ipk
-opkg install /etc/luci-proto-batman-adv_git-22.104.47289-0a762fd_all.ipk
+    log_say "Installing Mesh Packages..."
+    opkg install tgrouterappstore luci-app-shortcutmenu luci-app-poweroff luci-app-wizard
+    opkg remove wpad-mbedtls wpad-basic-mbedtls wpad-basic wpad-basic-openssl wpad-basic-wolfssl wpad-wolfssl
+    opkg install wpad-mesh-openssl kmod-batman-adv batctl avahi-autoipd batctl-full luci-app-dawn git jq
+    opkg install luci-app-easymesh luci-mod-dashboard tgwireguard tgopenvpn luci-app-poweroff luci-lib-ipkg lua luci
+    opkg install luci-proto-batman-adv luci-theme-argon luci-app-argon-config tgrouterappstore libiwinfo-lua libubus-lua
+    opkg install base-files busybox cgi-io dropbear firewall
     
 # Cleanup our auto-provision and prepare for first real boot
 [ -d /etc/auto-provision ] && rm -rf /etc/auto-provision
